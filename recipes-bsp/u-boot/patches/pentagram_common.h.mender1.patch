@@ -1,0 +1,19 @@
+--- a/include/configs/pentagram_common.h	2022-10-27 19:29:21.150914288 +0300
++++ a/include/configs/pentagram_common.h	2022-11-03 02:58:19.583887186 +0300
+@@ -301,7 +301,7 @@
+ #define CONFIG_EXTRA_ENV_SETTINGS \
+ "sz_sign=0x100\0" \
+ "b_c=console=tty1 console=ttyS0,115200 earlyprintk\0" \
+-"emmc_root=root=/dev/mmcblk0p8 rw rootwait\0" \
++"emmc_root=root=${mender_boot_part_name} rw rootwait\0" \
+ "args_kern=quiet loglevel=3 rd.systemd.show_status=auto rd.udev.log_priority=3\0" \
+ "stdin=" STDIN_CFG "\0" \
+ "stdout=" STDOUT_CFG "\0" \
+@@ -373,6 +373,7 @@
+ 	"setexpr sz_kernel ${sz_kernel} + ${sz_sign}; " \
+ 	"setexpr sz_kernel ${sz_kernel} + 0x200; setexpr sz_kernel ${sz_kernel} / 0x200; " \
+ 	"mmc read ${addr_dst_kernel} ${addr_src_kernel} ${sz_kernel}; " \
++	"run mender_setup; setenv emmc_root root=${mender_boot_part_name} rw rootwait;" \
+ 	"setenv bootargs ${b_c} ${emmc_root} ${args_emmc} ${args_kern}; " \
+ 	"run boot_kernel \0" \
+ "qk_emmc_boot=mmc read ${addr_tmp_header} ${addr_src_kernel} 0x1; " \

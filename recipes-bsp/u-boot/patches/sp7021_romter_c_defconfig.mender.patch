@@ -1,0 +1,10 @@
+--- a/configs/sp7021_romter_c_defconfig	2022-10-27 17:12:30.519440567 +0300
++++ a/configs/sp7021_romter_c_defconfig	2022-10-27 19:16:31.620869889 +0300
+@@ -86,3 +86,7 @@
+ CONFIG_USB_EHCI_HCD=n
+ CONFIG_USB_OHCI_HCD=n
+ CONFIG_USB_STORAGE=y
++
++# for Mender
++CONFIG_BOOTCOUNT_LIMIT=y
++CONFIG_BOOTCOUNT_ENV=y

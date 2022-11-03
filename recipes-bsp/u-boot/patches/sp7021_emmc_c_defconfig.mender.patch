@@ -1,0 +1,10 @@
+--- a/configs/sp7021_emmc_c_defconfig	2022-10-27 17:12:30.518440567 +0300
++++ a/configs/sp7021_emmc_c_defconfig	2022-10-27 19:16:10.436868667 +0300
+@@ -87,3 +87,7 @@
+ CONFIG_USB_EHCI_HCD=y
+ CONFIG_USB_OHCI_HCD=n
+ CONFIG_USB_STORAGE=y
++
++# for Mender
++CONFIG_BOOTCOUNT_LIMIT=y
++CONFIG_BOOTCOUNT_ENV=y

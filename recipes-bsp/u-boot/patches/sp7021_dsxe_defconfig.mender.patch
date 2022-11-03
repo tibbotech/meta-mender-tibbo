@@ -1,0 +1,10 @@
+--- a/configs/sp7021_dsxe_defconfig	2022-10-27 17:12:30.518440567 +0300
++++ a/configs/sp7021_dsxe_defconfig	2022-10-27 19:16:01.367868144 +0300
+@@ -97,3 +97,7 @@
+ 
+ # Tibbo: do not use kernel DTS
+ CONFIG_PENTAGRAM_SEPDTS=y
++
++# for Mender
++CONFIG_BOOTCOUNT_LIMIT=y
++CONFIG_BOOTCOUNT_ENV=y
