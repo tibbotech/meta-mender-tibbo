@@ -1,6 +1,13 @@
 # Tibbo recommended Setup
-```bash
 https://github.com/tibbotech/repo-manifests/tree/master/yocto-layers
+```bash
+curl https://raw.githubusercontent.com/tibbotech/repo-manifests/master/clone.sh > ./clone.sh && chmod 0755 ./clone.sh && ./clone.sh
+repo3 sync
+TEMPLATECONF=`pwd`/layers/meta-tibbo/build.tppg2/conf . layers/openembedded-core/oe-init-build-env ./build.tppg2
+install -d conf/multiconfig
+install -D ../layers/meta-tibbo/build.tppg2/conf/multiconfig/* conf/multiconfig/
+install -m 0644 ../layers/meta-tibbo/build.all/site.conf conf/
+
 ```
 
 # local.conf changes
@@ -19,10 +26,10 @@ INITRAMFS_MAXSIZE = "434200"
 
 # Mender layer (WIP)
 ```bash
-git clone git@gitlab.com:tibbotech/meta-mender-tibbo.git poky/meta-mender-tibbo
-git clone git@github.com:mendersoftware/meta-mender.git poky/meta-mender -b dunfell
-bitbake-layers add-layer <full_path>/poky/meta-mender-tibbo
-bitbake-layers add-layer <full_path>/poky/meta-mender
+git clone https://github.com/tibbotech/meta-mender-tibbo.git ../layers/meta-mender-tibbo
+git clone git@github.com:mendersoftware/meta-mender.git ../layers/meta-mender -b dunfell
+bitbake-layers add-layer ../layers/meta-mender/meta-mender-core/
+bitbake-layers add-layer ../layers/meta-mender-tibbo/
 ```
 
 # Basic build
@@ -32,7 +39,7 @@ bitbake mc::img-tst-tini
 
 # Create final binary
 ```bash
-cd /disk2/build.tibbo.dunfell.0/tmp/deploy/images/tppg2
+cd /disk2/build.tibbo.dunfell.1/tmp/deploy/images/tppg2
 make -f sp_make.mk -d
 ```
 
