@@ -15,9 +15,6 @@ MENDER_FEATURES_ENABLE:append = " mender-uboot"
 # build fixes
 INITRAMFS_MAXSIZE = "434200"
 
-# build fixes
-INITRAMFS_MAXSIZE = "434200"
-
 ```
 
 # Mender layer (WIP)
