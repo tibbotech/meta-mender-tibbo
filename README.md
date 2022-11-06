@@ -27,7 +27,7 @@ INITRAMFS_MAXSIZE = "434200"
 # Mender layer (WIP)
 ```bash
 git clone https://github.com/tibbotech/meta-mender-tibbo.git ../layers/meta-mender-tibbo
-git clone git@github.com:mendersoftware/meta-mender.git ../layers/meta-mender -b dunfell
+git clone https://github.com/mendersoftware/meta-mender.git ../layers/meta-mender -b dunfell
 bitbake-layers add-layer ../layers/meta-mender/meta-mender-core/
 bitbake-layers add-layer ../layers/meta-mender-tibbo/
 ```
