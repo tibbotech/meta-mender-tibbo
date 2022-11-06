@@ -10,6 +10,14 @@ install -m 0644 ../layers/meta-tibbo/build.all/site.conf conf/
 
 ```
 
+# Mender layer (WIP)
+```bash
+git clone https://github.com/tibbotech/meta-mender-tibbo.git ../layers/meta-mender-tibbo
+git clone https://github.com/mendersoftware/meta-mender.git ../layers/meta-mender -b dunfell
+bitbake-layers add-layer ../layers/meta-mender/meta-mender-core/
+bitbake-layers add-layer ../layers/meta-mender-tibbo/
+```
+
 # local.conf changes
 ```
 MENDER_ARTIFACT_NAME = "release-1"
@@ -22,14 +30,6 @@ MENDER_FEATURES_ENABLE:append = " mender-uboot"
 # build fixes
 INITRAMFS_MAXSIZE = "434200"
 
-```
-
-# Mender layer (WIP)
-```bash
-git clone https://github.com/tibbotech/meta-mender-tibbo.git ../layers/meta-mender-tibbo
-git clone https://github.com/mendersoftware/meta-mender.git ../layers/meta-mender -b dunfell
-bitbake-layers add-layer ../layers/meta-mender/meta-mender-core/
-bitbake-layers add-layer ../layers/meta-mender-tibbo/
 ```
 
 # Basic build
