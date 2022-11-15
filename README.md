@@ -22,13 +22,12 @@ bitbake-layers add-layer ../layers/meta-mender-tibbo/
 ```
 MENDER_ARTIFACT_NAME = "release-1"
 ARTIFACTIMG_FSTYPE = "ext4"
-DISTRO_FEATURES:append += "mender-uboot"
 INHERIT += "mender-uboot"
 
 # instead of mender-vars
-MENDER_FEATURES_ENABLE:append = " mender-uboot"
+MENDER_FEATURES_ENABLE:append:tppg2 = " mender-uboot"
 # build fixes
-INITRAMFS_MAXSIZE = "434200"
+INITRAMFS_MAXSIZE = "443200"
 
 ```
 
