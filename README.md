@@ -22,7 +22,7 @@ bitbake-layers add-layer ../layers/meta-mender-tibbo/
 ```
 MENDER_ARTIFACT_NAME = "release-1"
 ARTIFACTIMG_FSTYPE = "ext4"
-INHERIT += "mender-uboot"
+INHERIT:append:tppg2 += "mender-uboot"
 
 # instead of mender-vars
 MENDER_FEATURES_ENABLE:append:tppg2 = " mender-uboot"
