@@ -20,15 +20,20 @@ bitbake-layers add-layer ../layers/meta-mender-tibbo/
 
 # local.conf changes
 ```
+# Mender variables
 MENDER_ARTIFACT_NAME = "release-1"
 ARTIFACTIMG_FSTYPE = "ext4"
 INHERIT:append:tppg2 = " mender-uboot"
-
-# instead of mender-vars
 MENDER_FEATURES_ENABLE:append:tppg2 = " mender-uboot"
+
+MENDER_BOOT_PART=""
+MENDER_BOOT_PART_NUMBER="3"
+MENDER_DATA_PART = "${MENDER_STORAGE_DEVICE_BASE}10"
+MENDER_ROOTFS_PART_A="${MENDER_STORAGE_DEVICE_BASE}8"
+MENDER_ROOTFS_PART_B="${MENDER_STORAGE_DEVICE_BASE}9"
+
 # build fixes
 INITRAMFS_MAXSIZE = "443200"
-
 ```
 
 # Basic build
