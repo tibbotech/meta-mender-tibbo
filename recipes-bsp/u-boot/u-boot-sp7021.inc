@@ -22,5 +22,3 @@ CONFIG_ENV_UBI_VOLUME = "env"
 CONFIG_ENV_UBI_VOLUME_REDUND = "env_redund"
 
 UBOOT_CONFIG = "a7021_emmc a7021_ppg2 a7021_dsxe"
-  
-RDEPENDS:${PN} += "ca-certificates"
