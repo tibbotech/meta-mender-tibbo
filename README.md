@@ -36,6 +36,12 @@ MENDER_ROOTFS_PART_B="${MENDER_STORAGE_DEVICE_BASE}9"
 INITRAMFS_MAXSIZE = "443200"
 
 # new ISPE
+IMAGE_CLASSES += "isp_image"
+IMAGE_FSTYPES += "isp"
+
+IMAGE_TYPEDEP_isp += "ext4"
+
+# new ISPE partitions definition
 ISP_CONFIG += "emmcM"
 
 ISP_BOOTYP[emmcM] = "emmc"
@@ -60,14 +66,18 @@ ISP_SETBOO[emmcM] += "u-boot.bin-a7021_ppg2.img;0x10000"
 
 # Basic build
 ```bash
+bitbake mc:tpp-tppg2-arm5:imgf-xboot
 bitbake mc::img-tst-tini
 ```
 
-# Create final binary
+# Create final binary (old way)
 ```bash
 cd /disk2/build.tibbo.dunfell.1/tmp/deploy/images/tppg2
 make -f sp_make.mk -d
 ```
+
+# Final binary (new way)
+Placed at /disk2/build.tibbo.dunfell.1/tmp/deploy/images/tppg2/emmcM/
 
 # Flash binary to board
 1. Format SD card to FAT32
