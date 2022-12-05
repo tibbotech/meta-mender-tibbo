@@ -46,28 +46,27 @@ ISP_CONFIG += "emmcM"
 
 ISP_BOOTYP[emmcM] = "emmc"
 
-ISP_CONFIG[emmcM] += "xboot1;../tppg2-arm5/xboot-emmc.img;0x0"
+ISP_CONFIG[emmcM] += "xboot1;../${MACHINE}-arm5/xboot-emmc.img;0x0"
 ISP_CONFIG[emmcM] += "uboot1;u-boot.bin-a7021_ppg2.img;0x22"
 ISP_CONFIG[emmcM] += "uboot2;u-boot.bin-a7021_ppg2.img;0x822"
 ISP_CONFIG[emmcM] += "env;;0x1022"
 ISP_CONFIG[emmcM] += "env_redund;;0x1422"
-ISP_CONFIG[emmcM] += "nonos;../tppg2-arm5/a926-empty.img;0x1822"
+ISP_CONFIG[emmcM] += "nonos;../${MACHINE}-arm5/a926-empty.img;0x1822"
 ISP_CONFIG[emmcM] += "dtb;sp7021-ltpp3g2revD.dtb;0x2022"
-ISP_CONFIG[emmcM] += "kernel;${KERNEL_IMAGETYPE}-initramfs-tppg2.img;0x2222"
+ISP_CONFIG[emmcM] += "kernel;${KERNEL_IMAGETYPE}-initramfs-${MACHINE}.img;0x2222"
 ISP_CONFIG[emmcM] += "rootfs;${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.ext4;0x12222"
 # offset 4GB - 1GB
 ISP_CONFIG[emmcM] += "rootB;${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.ext4;0x600000"
 # offset 4GB - 200MB
 ISP_CONFIG[emmcM] += "data;;0x79c000"
 
-ISP_SETBOO[emmcM] += "../tppg2-arm5/xboot-emmc.img;0x0"
+ISP_SETBOO[emmcM] += "../${MACHINE}-arm5/xboot-emmc.img;0x0"
 ISP_SETBOO[emmcM] += "u-boot.bin-a7021_ppg2.img;0x10000"
 ```
 
 # Basic build
 ```bash
-bitbake mc:tpp-tppg2-arm5:imgf-xboot
-bitbake mc::img-tst-tini
+MACHINE=tppg2 bitbake mc:tppg2:img-tst-tini
 ```
 
 # Create final binary (old way)
