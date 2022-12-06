@@ -4,8 +4,6 @@ https://github.com/tibbotech/repo-manifests/tree/master/yocto-layers
 curl https://raw.githubusercontent.com/tibbotech/repo-manifests/master/clone.sh > ./clone.sh && chmod 0755 ./clone.sh && ./clone.sh
 repo3 sync
 TEMPLATECONF=`pwd`/layers/meta-tibbo/build.tppg2/conf . layers/openembedded-core/oe-init-build-env ./build.tppg2
-install -d conf/multiconfig
-install -D ../layers/meta-tibbo/build.tppg2/conf/multiconfig/* conf/multiconfig/
 install -m 0644 ../layers/meta-tibbo/build.all/site.conf conf/
 
 ```
