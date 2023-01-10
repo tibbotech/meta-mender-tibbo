@@ -53,10 +53,10 @@ ISP_CONFIG[emmcM] += "nonos;../${MACHINE}-arm5/a926-empty.img;0x1822"
 ISP_CONFIG[emmcM] += "dtb;sp7021-ltpp3g2revD.dtb;0x2022"
 ISP_CONFIG[emmcM] += "kernel;${KERNEL_IMAGETYPE}-initramfs-${MACHINE}.img;0x2222"
 ISP_CONFIG[emmcM] += "rootfs;${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.ext4;0x12222"
-# offset 4GB - 1GB
+# offset 3.8GB - 1GB
 ISP_CONFIG[emmcM] += "rootB;${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.ext4;0x600000"
-# offset 4GB - 200MB
-ISP_CONFIG[emmcM] += "data;;0x79c000"
+# offset 3.8GB - 200MB
+ISP_CONFIG[emmcM] += "data;;0x700000"
 
 ISP_SETBOO[emmcM] += "../${MACHINE}-arm5/xboot-emmc.img;0x0"
 ISP_SETBOO[emmcM] += "u-boot.bin-a7021_ppg2.img;0x10000"
