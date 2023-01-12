@@ -56,10 +56,12 @@ ISP_CONFIG[emmcM] += "rootfs;${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.ext4;0x12222"
 # offset 3.8GB - 1GB
 ISP_CONFIG[emmcM] += "rootB;${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.ext4;0x600000"
 # offset 3.8GB - 200MB
-ISP_CONFIG[emmcM] += "data;;0x700000"
+ISP_CONFIG[emmcM] += "data;${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.dataimg;0x700000"
 
 ISP_SETBOO[emmcM] += "../${MACHINE}-arm5/xboot-emmc.img;0x0"
 ISP_SETBOO[emmcM] += "u-boot.bin-a7021_ppg2.img;0x10000"
+
+IMAGE_TYPEDEP_isp += "dataimg"
 ```
 
 # Basic build
