@@ -69,17 +69,17 @@ ISP_SETBOO[emmcM] += "u-boot.bin-a7021_ppg2.img;0x10000"
 ```bash
 MACHINE=tppg2 bitbake mc:tppg2:img-tst-tini
 ```
-ISPBOOOD will be placed at <yourbuilddir>/deploy/images/tppg2/emmcM/
+ISPBOOOT.BIN will be placed at BUILDDIR/deploy/images/tppg2/emmcM/
 
 # Old way to create final binary
 ```bash
-cd /disk2/build.tibbo.dunfell.1/tmp/deploy/images/tppg2
+cd BUILDDIR/deploy/images/tppg2
 make -f sp_make.mk -d
 ```
 
 # Flashing ISPBOOOT.BIN to board
 1. Format SD card to FAT32
-2. Copy <yourbuilddir>/deploy/images/tppg2/sp_out/ISPBOOOT.BIN to the root of the SD card
+2. Copy BUILDDIR/deploy/images/tppg2/emmcM/ISPBOOOT.BIN to the root of the SD card
 3. Jump CN10 & CN11 and insert SD card
 4. Powerup the board, wait until complete the Flash until `ISP all: Done`
 5. Unjump CN10 & CN11 and remove the SD card
