@@ -8,7 +8,7 @@ install -m 0644 ../layers/meta-tibbo/build.all/site.conf conf/
 
 ```
 
-# + Mender layer (WIP)
+# + Mender layer
 ```bash
 git clone https://github.com/tibbotech/meta-mender-tibbo.git ../layers/meta-mender-tibbo
 git clone https://github.com/mendersoftware/meta-mender.git ../layers/meta-mender -b dunfell
