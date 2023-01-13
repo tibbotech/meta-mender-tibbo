@@ -33,17 +33,19 @@ MENDER_ROOTFS_PART_B="${MENDER_STORAGE_DEVICE_BASE}9"
 # build fixes
 INITRAMFS_MAXSIZE = "443200"
 
-# new ISPE
-IMAGE_CLASSES += "isp_image"
-IMAGE_FSTYPES += "isp"
+# ISPE definitions
 
+# images of this type is the part of ISP. should be built first
 IMAGE_TYPEDEP_isp += "ext4"
+IMAGE_TYPEDEP_isp += "dataimg"
 
-# new ISPE partitions definition
+# the ISP set subfolder/image ID
 ISP_CONFIG += "emmcM"
 
+# to boot from EMMC
 ISP_BOOTYP[emmcM] = "emmc"
 
+# partition name;binary contents;offset (512byte blocks)
 ISP_CONFIG[emmcM] += "xboot1;../${MACHINE}-arm5/xboot-emmc.img;0x0"
 ISP_CONFIG[emmcM] += "uboot1;u-boot.bin-a7021_ppg2.img;0x22"
 ISP_CONFIG[emmcM] += "uboot2;u-boot.bin-a7021_ppg2.img;0x822"
@@ -53,15 +55,14 @@ ISP_CONFIG[emmcM] += "nonos;../${MACHINE}-arm5/a926-empty.img;0x1822"
 ISP_CONFIG[emmcM] += "dtb;sp7021-ltpp3g2revD.dtb;0x2022"
 ISP_CONFIG[emmcM] += "kernel;${KERNEL_IMAGETYPE}-initramfs-${MACHINE}.img;0x2222"
 ISP_CONFIG[emmcM] += "rootfs;${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.ext4;0x12222"
-# offset 3.8GB - 1GB
+# offset=(3.8GB - 1GB)
 ISP_CONFIG[emmcM] += "rootB;${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.ext4;0x600000"
-# offset 3.8GB - 200MB
+# offset= (3.8GB - 200MB)
 ISP_CONFIG[emmcM] += "data;${IMAGE_NAME}${IMAGE_NAME_SUFFIX}.dataimg;0x700000"
 
+# ISPBOOOT.BIN boot area
 ISP_SETBOO[emmcM] += "../${MACHINE}-arm5/xboot-emmc.img;0x0"
 ISP_SETBOO[emmcM] += "u-boot.bin-a7021_ppg2.img;0x10000"
-
-IMAGE_TYPEDEP_isp += "dataimg"
 ```
 
 # Basic build
