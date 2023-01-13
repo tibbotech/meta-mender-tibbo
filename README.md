@@ -1,4 +1,4 @@
-# Tibbo recommended Setup
+# Tibbo layers setup
 https://github.com/tibbotech/repo-manifests/tree/master/yocto-layers
 ```bash
 curl https://raw.githubusercontent.com/tibbotech/repo-manifests/master/clone.sh > ./clone.sh && chmod 0755 ./clone.sh && ./clone.sh
@@ -8,7 +8,7 @@ install -m 0644 ../layers/meta-tibbo/build.all/site.conf conf/
 
 ```
 
-# Mender layer (WIP)
+# + Mender layer (WIP)
 ```bash
 git clone https://github.com/tibbotech/meta-mender-tibbo.git ../layers/meta-mender-tibbo
 git clone https://github.com/mendersoftware/meta-mender.git ../layers/meta-mender -b dunfell
@@ -16,7 +16,7 @@ MACHINE=tppg2 bitbake-layers add-layer ../layers/meta-mender/meta-mender-core/
 MACHINE=tppg2 bitbake-layers add-layer ../layers/meta-mender-tibbo/
 ```
 
-# local.conf changes
+# + Add to your local.conf
 ```
 # Mender variables
 MENDER_ARTIFACT_NAME = "release-1"
@@ -65,23 +65,21 @@ ISP_SETBOO[emmcM] += "../${MACHINE}-arm5/xboot-emmc.img;0x0"
 ISP_SETBOO[emmcM] += "u-boot.bin-a7021_ppg2.img;0x10000"
 ```
 
-# Basic build
+# Build of the 'img-tst-tini' image
 ```bash
 MACHINE=tppg2 bitbake mc:tppg2:img-tst-tini
 ```
+ISPBOOOD will be placed at <yourbuilddir>/deploy/images/tppg2/emmcM/
 
-# Create final binary (old way)
+# Old way to create final binary
 ```bash
 cd /disk2/build.tibbo.dunfell.1/tmp/deploy/images/tppg2
 make -f sp_make.mk -d
 ```
 
-# Final binary (new way)
-Placed at /disk2/build.tibbo.dunfell.1/tmp/deploy/images/tppg2/emmcM/
-
-# Flash binary to board
+# Flashing ISPBOOOT.BIN to board
 1. Format SD card to FAT32
-2. Copy /disk2/build.tibbo.dunfell.0/tmp/deploy/images/tppg2/sp_out/ISPBOOOT.BIN to the root of the SD card
+2. Copy <yourbuilddir>/deploy/images/tppg2/sp_out/ISPBOOOT.BIN to the root of the SD card
 3. Jump CN10 & CN11 and insert SD card
 4. Powerup the board, wait until complete the Flash until `ISP all: Done`
 5. Unjump CN10 & CN11 and remove the SD card
