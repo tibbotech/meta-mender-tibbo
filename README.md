@@ -16,13 +16,17 @@ MACHINE=tppg2 bitbake-layers add-layer ../layers/meta-mender/meta-mender-core/
 MACHINE=tppg2 bitbake-layers add-layer ../layers/meta-mender-tibbo/
 ```
 
-# + Add to your local.conf
+# Add to your local.conf
 ```
 # Mender variables
 MENDER_ARTIFACT_NAME = "release-1"
 ARTIFACTIMG_FSTYPE = "ext4"
-INHERIT:append:tppg2 = " mender-uboot"
+# for u-boot base test only
+#INHERIT:append:tppg2 = " mender-uboot"
+# for the complete image
+INHERIT:append:tppg2 = " mender-full"
 MENDER_FEATURES_ENABLE:append:tppg2 = " mender-uboot"
+MENDER_FEATURES_DISABLE:append = " mender-grub mender-image-uefi"
 
 MENDER_BOOT_PART=""
 MENDER_BOOT_PART_NUMBER="3"
@@ -31,7 +35,7 @@ MENDER_ROOTFS_PART_A="${MENDER_STORAGE_DEVICE_BASE}8"
 MENDER_ROOTFS_PART_B="${MENDER_STORAGE_DEVICE_BASE}9"
 
 # build fixes
-INITRAMFS_MAXSIZE = "443200"
+INITRAMFS_MAXSIZE = "463200"
 
 # ISPE definitions
 
@@ -71,9 +75,9 @@ MACHINE=tppg2 bitbake mc:tppg2:img-tst-tini
 ```
 ISPBOOOT.BIN will be placed at BUILDDIR/deploy/images/tppg2/emmcM/
 
-# Old way to create final binary
+# Old way to create final binary (optional)
 ```bash
-cd BUILDDIR/deploy/images/tppg2
+cd /disk2/build.tibbo.dunfell.1/tmp/deploy/images/tppg2
 make -f sp_make.mk -d
 ```
 
