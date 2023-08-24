@@ -3,9 +3,8 @@ https://github.com/tibbotech/repo-manifests/tree/master/yocto-layers
 ```bash
 curl https://raw.githubusercontent.com/tibbotech/repo-manifests/master/clone.sh > ./clone.sh && chmod 0755 ./clone.sh && ./clone.sh
 repo3 sync
-TEMPLATECONF=`pwd`/layers/meta-tibbo/build.tppg2/conf . layers/openembedded-core/oe-init-build-env ./build.tppg2
-install -m 0644 ../layers/meta-tibbo/build.all/site.conf conf/
-
+TEMPLATECONF=`pwd`/layers/meta-tibbo/conf/templates/tppg2 . layers/openembedded-core/oe-init-build-env ./build.tppg2
+install -m 0644 ../layers/meta-tibbo/conf/templates/site.conf conf/
 ```
 
 # + Mender layer
